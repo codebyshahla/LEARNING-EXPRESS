@@ -1,10 +1,8 @@
 const express = require('express')
 const app = express()
-const path = require('path')
 const port = 5000
 const bodyParser =require('body-parser')
-const users = require('./models/users')
-const router=require("./controller/myController")
+const Router = require('./routes/route')
 const session = require("express-session")
 
 const dotEnv = require('dotenv')
@@ -33,10 +31,8 @@ app.use(session({
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use (bodyParser.urlencoded({extended:true}))
-app.use('/',router);
 
-
-
+app.use('/',Router);
 
 app.listen(port, ()=>{
     console.log("Server running on the port 5000")
