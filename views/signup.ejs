@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center style="margin-top: 250px;" >
+   <h1>SIGNUP PAGE</h1>
+   <form action="/signup" method="post" onsubmit="return checkPassword()">
+        <input type="text" name="name" style="margin-bottom: 20px;" placeholder="ENTER THE NAME"><br>
+        <input type="password" id="password" name="password" style="margin-bottom: 20px;" placeholder="ENTER THE PASSWIRD"><br> 
+        <p style="display: none; color: red;" id="show">Password must contain uppercase,lowercase,special character and number</p>
+        <button>sign up</button>
+        
+        
+    </center>
+    <script>
+        function checkPassword() {
+            const show=document.getElementById("show")
+            const pass = document.getElementById("password").value;
+            const passwordRegex =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            const checkPassword=passwordRegex.test(pass)
+            if(checkPassword){
+                return true;
+
+            }
+            else{
+                show.style.display="block"
+                return false;
+        }
+
+
+        }
+    </script>
+ </form>
+</body>
+</html>
